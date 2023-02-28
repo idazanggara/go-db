@@ -38,4 +38,20 @@ func main() {
 	// 		panic(err)
 	// 	}
 	// }()
+
+	_, err = db.NamedExec(`INSERT INTO customer (id, name, address, phone, email, saldo) VALUES (:id, :name, :address, :phone, :email, :saldo)`, map[string]interface{}{
+		"id":      "C001",
+		"name":    "Idaz",
+		"address": "Jakarta",
+		"phone":   "12321",
+		"email":   "Idaz@gmail.com",
+		"saldo":   5000000,
+	})
+
+	if err != nil {
+		log.Fatalln(err)
+	} else {
+		log.Print("Successfully insert data")
+	}
+
 }
